@@ -267,6 +267,8 @@ void jb_games_teams::AllPluginsLoaded() {
         return;
     }
 
+    LoadTranslations();
+
     jailbreak_api->RegisterGameFeature(g_PLID,"teams",GetTranslation("Teams_WardenGameButton"),[](int iWarden){
         WardenGameMenu(iWarden);
     });
