@@ -133,6 +133,8 @@ std::vector<int> GetAliveTerrorists() {
         if (!pController || !pController->IsConnected() || pController->GetTeam() != CS_TEAM_T) continue;
         auto pPawn = pController->GetPlayerPawn();
         if (!pPawn || !pPawn->IsAlive()) continue;
+        if (jailbreak_api->IsPrisonerFreeday(i)) continue;
+        if (jailbreak_api->IsPrisonerRebel(i)) continue;
 
         vAliveT.push_back(i);
     }
