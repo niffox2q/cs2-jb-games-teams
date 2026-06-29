@@ -32,8 +32,8 @@ bool bGameStarted = false;
 std::map<std::string, std::string> phrases;
 
 Color clrTeam1(255,0,0,255);
-Color clrTeam2(0,255,0,255);
-Color clrTeam3(0,0,255,255);
+Color clrTeam2(0,0,255,255);
+Color clrTeam3(0,255,0,255);
 Color clrTeam4(255,255,0,255);
 
 Color clrDefault(255,255,255,255);
@@ -160,8 +160,25 @@ void TryMakeTeams(int iWarden, int iTeamsRequired) {
         if (pController) {
             auto pPawn = pController->GetPlayerPawn();
             if (pPawn) {
+                
                 pPawn->m_clrRender = g_TeamColors[iTeamIndex];
                 utils->SetStateChanged(pPawn, "CBaseModelEntity", "m_clrRender");
+                switch (iTeamIndex) {
+                    case 1: 
+                        PrintSlotPrefixed(iSlot,GetTranslation("Teams_InTeamRed"));
+                        break;
+                    case 2: 
+                        PrintSlotPrefixed(iSlot,GetTranslation("Teams_InTeamBlue"));
+                        break;
+                    case 3: 
+                        PrintSlotPrefixed(iSlot,GetTranslation("Teams_InTeamGreen"));
+                        break;
+                    case 4: 
+                        PrintSlotPrefixed(iSlot,GetTranslation("Teams_InTeamYellow"));
+                        break;
+                    default: 
+                        break;
+                }
             }
         }
     }
@@ -311,4 +328,4 @@ const char* jb_games_teams::GetLicense() { return "Private"; }
 const char* jb_games_teams::GetLogTag() { return "[JB] Team Games"; }
 const char* jb_games_teams::GetName() { return "[JB] Team Games"; }
 const char* jb_games_teams::GetURL() { return "https://t.me/niffox_2q"; }
-const char* jb_games_teams::GetVersion() { return "1.0.0"; }
+const char* jb_games_teams::GetVersion() { return "1.1"; }
